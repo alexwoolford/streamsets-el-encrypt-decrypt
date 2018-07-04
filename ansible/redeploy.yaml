@@ -1,0 +1,31 @@
+---
+# redeploy.yml
+
+- hosts: sch
+  user: root
+  vars:
+    remote_lib_path: /opt/streamsets-datacollector/libs-common-lib
+
+  tasks:
+      - name: rebuild jars
+        local_action: shell mvn clean package -DskipTests chdir=/Users/alexwoolford/streamsets-el-encrypt-decrypt
+
+      - name: delete remote lib path
+        file:
+          path: "{{ remote_lib_path }}"
+          state: absent
+
+      - name: create remote lib path exists
+        file:
+          path: "{{ remote_lib_path }}"
+          state: directory
+
+      - name: copy jar to streamsets
+        copy:
+          src: /Users/alexwoolford/streamsets-el-encrypt-decrypt/target/streamsets-el-encrypt-decrypt-1.0-SNAPSHOT.jar
+          dest: "{{ remote_lib_path }}"
+          force: yes
+
+      - name: restart sdc
+        service: name=sdc
+                 state=restarted
