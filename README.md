@@ -6,13 +6,5 @@ Strings can be encryped and decrypted in StreamSets Data Collector using the enc
 * `initVector`: random  18 character string
 * `string`: string to encrypt/decrypt
 
-<kbd><img title="video example" src="https://raw.githubusercontent.com/alexwoolford/streamsets-el-encrypt-decrypt/master/streamsets-el-encrypt-decrypt/img/encrypt-decrypt.gif"></kbd><br/>
-
-
-
-
-
-
-
-
+<kbd><img title="video example" src="https://raw.githubusercontent.com/alexwoolford/streamsets-el-encrypt-decrypt/blob/master/img/encrypt-decrypt.gif"></kbd><br/>
 
